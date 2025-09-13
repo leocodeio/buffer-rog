@@ -15,7 +15,7 @@ export default function Home() {
 
       <LandingImgLogo className="w-auto h-[100px] mx-auto" />
 
-      <p className="text-center text-lg font-bold">India's last minute app</p>
+      <p className="text-center text-lg font-bold">India&apos;s last minute app</p>
 
       <div className="max-w-md mx-auto bg-white rounded-3xl shadow-lg shadow-gray-300 overflow-hidden p-4 flex flex-col items-center">
         <h2 className="text-2xl font-bold mb-1">xxxx</h2>
