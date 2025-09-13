@@ -58,8 +58,59 @@ export default function MainPage() {
         name: "Biscuits & Snacks",
         image: "/assets/dashboard/catalog/cat_05.png",
       },
+      {
+        name: "Oil, Ghee & Masala",
+        image: "/assets/dashboard/catalog/cat_03.png",
+      },
+      {
+        name: "Dairy, Bread & Milk",
+        image: "/assets/dashboard/catalog/cat_04.png",
+      },
+      {
+        name: "Biscuits & Snacks",
+        image: "/assets/dashboard/catalog/cat_05.png",
+      },
     ],
   };
+
+  // Diwali sale category data
+  const diwaliCategories = [
+    {
+      id: 2,
+      title: "Sweets",
+      subtitle: "Gifts",
+      image: "/assets/dashboard/main/diwali/diw_02.png",
+      alt: "Sweets",
+    },
+    {
+      id: 5,
+      title: "Decoration",
+      subtitle: "& Lights",
+      image: "/assets/dashboard/main/diwali/diw_01.png", // Reusing image for example
+      alt: "Decoration",
+    },
+    {
+      id: 3,
+      title: "Appliances",
+      subtitle: "& Gadgets",
+      image: "/assets/dashboard/main/diwali/diw_03.png",
+      alt: "Appliances",
+    },
+    {
+      id: 4,
+      title: "Home",
+      subtitle: "& Living",
+      image: "/assets/dashboard/main/diwali/diw_04.png",
+      alt: "Home Decor",
+    },
+    {
+      id: 6,
+      title: "Dry Fruits",
+      subtitle: "& Nuts",
+      image: "/assets/dashboard/main/diwali/diw_02.png", // Reusing image for example
+      alt: "Dry Fruits",
+    },
+  ];
 
   return (
     <>
@@ -67,73 +118,34 @@ export default function MainPage() {
       <div className="mb-5">
         <div className="relative w-full h-40 overflow-hidden bg-red-500 border border-t-white border-x-red-500 py-10">
           <div className="absolute inset-0 flex flex-col justify-center px-4">
-            <div className="flex items-center">
-              <Image
-                src="/assets/dashboard/main/diwali/diw_01.png"
-                alt="Diwali"
-                width={24}
-                height={24}
-                className="mr-2"
-              />
+            <div className="flex items-center justify-center w-full">
               <h2 className="text-2xl font-bold text-white">
                 Mega Diwali Sale
               </h2>
-              <Image
-                src="/assets/dashboard/main/diwali/diw_01.png"
-                alt="Diwali"
-                width={24}
-                height={24}
-                className="ml-2"
-              />
             </div>
-            <div className="flex flex-wrap gap-2 mt-3">
-              <div className="bg-white p-2 rounded-lg flex flex-col items-center w-20 shadow-sm">
-                <p className="text-xs font-medium">Lights, Diyas</p>
-                <p className="text-xs font-medium">&amp; Candles</p>
-                <div className="w-12 h-12 mt-1">
-                  <Image
-                    src="/assets/dashboard/main/diwali/diw_01.png"
-                    alt="Lights & Diyas"
-                    width={48}
-                    height={48}
-                  />
-                </div>
-              </div>
-              <div className="bg-white p-2 rounded-lg flex flex-col items-center w-20 shadow-sm">
-                <p className="text-xs font-medium">Sweets</p>
-                <p className="text-xs font-medium">Gifts</p>
-                <div className="w-12 h-12 mt-1">
-                  <Image
-                    src="/assets/dashboard/main/diwali/diw_02.png"
-                    alt="Sweets"
-                    width={48}
-                    height={48}
-                  />
-                </div>
-              </div>
-              <div className="bg-white p-2 rounded-lg flex flex-col items-center w-20 shadow-sm">
-                <p className="text-xs font-medium">Appliances</p>
-                <p className="text-xs font-medium">&amp; Gadgets</p>
-                <div className="w-12 h-12 mt-1">
-                  <Image
-                    src="/assets/dashboard/main/diwali/diw_03.png"
-                    alt="Appliances"
-                    width={48}
-                    height={48}
-                  />
-                </div>
-              </div>
-              <div className="bg-white p-2 rounded-lg flex flex-col items-center w-20 shadow-sm">
-                <p className="text-xs font-medium">Home</p>
-                <p className="text-xs font-medium">&amp; Living</p>
-                <div className="w-12 h-12 mt-1">
-                  <Image
-                    src="/assets/dashboard/main/diwali/diw_04.png"
-                    alt="Home Decor"
-                    width={48}
-                    height={48}
-                  />
-                </div>
+            <div className="flex overflow-x-auto pb-2 mt-3 hide-scrollbar">
+              <div className="flex gap-3 px-1">
+                {diwaliCategories.map((category) => (
+                  <div
+                    key={category.id}
+                    className="bg-gray-200 p-2 rounded-lg flex flex-col items-center w-20 shadow-sm flex-shrink-0"
+                  >
+                    <p className="text-xs font-medium text-center">
+                      {category.title}
+                    </p>
+                    <p className="text-xs font-medium text-center">
+                      {category.subtitle}
+                    </p>
+                    <div className="w-12 h-12 mt-1 flex items-center justify-center">
+                      <Image
+                        src={category.image}
+                        alt={category.alt}
+                        width={48}
+                        height={48}
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
