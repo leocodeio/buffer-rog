@@ -71,9 +71,9 @@ export default function CartPage() {
             {bestsellerProducts.map((product) => (
               <div
                 key={product.id}
-                className="border rounded-lg overflow-hidden"
+                className="rounded-lg overflow-hidden"
               >
-                <div className="relative h-24 w-full">
+                <div className="relative h-26 w-full">
                   <Image
                     src={product.image}
                     alt={product.name}
