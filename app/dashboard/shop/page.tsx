@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 // Bestseller product type definition
-type BestsellerProduct = {
+export type BestsellerProduct = {
   id: number;
   name: string;
   price: number;
@@ -42,7 +42,6 @@ export default function CartPage() {
     },
   ];
 
-  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <div className="flex-1 px-4 py-6">
@@ -69,10 +68,7 @@ export default function CartPage() {
           <h3 className="font-bold text-xl mb-4">Bestsellers</h3>
           <div className="grid grid-cols-3 gap-3">
             {bestsellerProducts.map((product) => (
-              <div
-                key={product.id}
-                className="rounded-lg overflow-hidden"
-              >
+              <div key={product.id} className="rounded-lg overflow-hidden">
                 <div className="relative h-26 w-full">
                   <Image
                     src={product.image}
@@ -95,7 +91,9 @@ export default function CartPage() {
                         height={16}
                       />
                     </div>
-                    <p className="text-xs text-gray-500">{product.deliveryTime} mins</p>
+                    <p className="text-xs text-gray-500">
+                      {product.deliveryTime} mins
+                    </p>
                   </div>
                   <div className="flex items-center justify-between mt-1">
                     <p className="font-bold">₹ {product.price}</p>

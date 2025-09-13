@@ -1,105 +1,193 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
+import CategorySlider from "@/components/dashboard/CategorySlider";
+import { BestsellerProduct } from "../shop/page";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Button >Click me</Button> 
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+export default function MainPage() {
+  // Featured products
+  // Bestseller products data
+  const bestsellerProducts: BestsellerProduct[] = [
+    {
+      id: 1,
+      name: "Milk",
+      price: 27,
+      image: "/assets/dashboard/cart/bestsellers/bs_01.png",
+      quantity: "500 ML",
+      deliveryTime: 10,
+    },
+    {
+      id: 2,
+      name: "Potato (Aloo)",
+      price: 37,
+      image: "/assets/dashboard/cart/bestsellers/bs_02.png",
+      quantity: "1 KG",
+      deliveryTime: 8,
+    },
+    {
+      id: 3,
+      name: "Hybrid Tomato",
+      price: 37,
+      image: "/assets/dashboard/cart/bestsellers/bs_03.png",
+      quantity: "1 KG",
+      deliveryTime: 6,
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  // Category data
+  const groceryCategory = {
+    title: "Grocery & Kitchen",
+    items: [
+      {
+        name: "Vegetables & Fruits",
+        image: "/assets/dashboard/catalog/cat_01.png",
+      },
+      {
+        name: "Atta, Dal & Rice",
+        image: "/assets/dashboard/catalog/cat_02.png",
+      },
+      {
+        name: "Oil, Ghee & Masala",
+        image: "/assets/dashboard/catalog/cat_03.png",
+      },
+      {
+        name: "Dairy, Bread & Milk",
+        image: "/assets/dashboard/catalog/cat_04.png",
+      },
+      {
+        name: "Biscuits & Snacks",
+        image: "/assets/dashboard/catalog/cat_05.png",
+      },
+    ],
+  };
+
+  return (
+    <>
+      {/* Mega Diwali Sale Card */}
+      <div className="mb-5">
+        <div className="relative w-full h-40 overflow-hidden bg-red-500 border border-t-white border-x-red-500 py-10">
+          <div className="absolute inset-0 flex flex-col justify-center px-4">
+            <div className="flex items-center">
+              <Image
+                src="/assets/dashboard/main/diwali/diw_01.png"
+                alt="Diwali"
+                width={24}
+                height={24}
+                className="mr-2"
+              />
+              <h2 className="text-2xl font-bold text-white">
+                Mega Diwali Sale
+              </h2>
+              <Image
+                src="/assets/dashboard/main/diwali/diw_01.png"
+                alt="Diwali"
+                width={24}
+                height={24}
+                className="ml-2"
+              />
+            </div>
+            <div className="flex flex-wrap gap-2 mt-3">
+              <div className="bg-white p-2 rounded-lg flex flex-col items-center w-20 shadow-sm">
+                <p className="text-xs font-medium">Lights, Diyas</p>
+                <p className="text-xs font-medium">&amp; Candles</p>
+                <div className="w-12 h-12 mt-1">
+                  <Image
+                    src="/assets/dashboard/main/diwali/diw_01.png"
+                    alt="Lights & Diyas"
+                    width={48}
+                    height={48}
+                  />
+                </div>
+              </div>
+              <div className="bg-white p-2 rounded-lg flex flex-col items-center w-20 shadow-sm">
+                <p className="text-xs font-medium">Sweets</p>
+                <p className="text-xs font-medium">Gifts</p>
+                <div className="w-12 h-12 mt-1">
+                  <Image
+                    src="/assets/dashboard/main/diwali/diw_02.png"
+                    alt="Sweets"
+                    width={48}
+                    height={48}
+                  />
+                </div>
+              </div>
+              <div className="bg-white p-2 rounded-lg flex flex-col items-center w-20 shadow-sm">
+                <p className="text-xs font-medium">Appliances</p>
+                <p className="text-xs font-medium">&amp; Gadgets</p>
+                <div className="w-12 h-12 mt-1">
+                  <Image
+                    src="/assets/dashboard/main/diwali/diw_03.png"
+                    alt="Appliances"
+                    width={48}
+                    height={48}
+                  />
+                </div>
+              </div>
+              <div className="bg-white p-2 rounded-lg flex flex-col items-center w-20 shadow-sm">
+                <p className="text-xs font-medium">Home</p>
+                <p className="text-xs font-medium">&amp; Living</p>
+                <div className="w-12 h-12 mt-1">
+                  <Image
+                    src="/assets/dashboard/main/diwali/diw_04.png"
+                    alt="Home Decor"
+                    width={48}
+                    height={48}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+
+      <div className="pb-20 p-6">
+        {/* Bestsellers Section */}
+        <div>
+          <h3 className="font-bold text-xl mb-4">Bestsellers</h3>
+          <div className="grid grid-cols-3 gap-3">
+            {bestsellerProducts.map((product) => (
+              <div key={product.id} className="rounded-lg overflow-hidden">
+                <div className="relative h-26 w-full">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                  <button className="bg-white text-green-500 border border-green-500 text-xs px-2 py-1 rounded absolute bottom-[-10px] right-0">
+                    ADD
+                  </button>
+                </div>
+                <div className="p-2">
+                  <p className="text-xs font-medium">{product.name}</p>
+                  <div className="flex items-center gap-1 mt-1">
+                    <div className="relative w-4 h-4">
+                      <Image
+                        src="/assets/dashboard/cart/timer.png"
+                        alt="Timer"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
+                    <p className="text-xs text-gray-500">
+                      {product.deliveryTime} mins
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between mt-1">
+                    <p className="font-bold">₹ {product.price}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Categories Section */}
+        <CategorySlider
+          title={groceryCategory.title}
+          items={groceryCategory.items}
+        />
+      </div>
+    </>
   );
 }
