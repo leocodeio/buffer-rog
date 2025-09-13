@@ -107,7 +107,7 @@ export default function DashboardLayout({
       <Header />
 
       {/* Main content */}
-      <main className="flex-1 p-4">{children}</main>
+      <main className="flex-1">{children}</main>
 
       {/* Footer navigation */}
       <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
