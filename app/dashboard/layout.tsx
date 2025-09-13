@@ -74,7 +74,7 @@ export default function DashboardLayout({
       label: "Catalog",
     },
     {
-      path: "/dashboard/cart",
+      path: "/dashboard/print",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@ export default function DashboardLayout({
     <div className="flex flex-col min-h-screen">
       {/* Header */}
       <Header />
-      
+
       {/* Main content */}
       <main className="flex-1 p-4">{children}</main>
 
@@ -132,7 +132,6 @@ export default function DashboardLayout({
                 >
                   {item.icon}
                 </div>
-                <span className="text-xs mt-1">{item.label}</span>
               </Link>
             ))}
           </nav>
