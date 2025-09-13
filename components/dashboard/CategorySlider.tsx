@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, MouseEvent } from "react";
 import Image from "next/image";
 
 interface CategoryItem {
@@ -15,13 +15,42 @@ interface CategoryProps {
 
 export default function CategorySlider({ title, items }: CategoryProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const scrollAmount = direction === "left" ? -240 : 240;
-      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  const handleMouseDown = (e: MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+    scrollContainerRef.current.style.cursor = "grabbing";
+  };
+
+  const handleMouseUp = () => {
+    if (!scrollContainerRef.current) return;
+
+    setIsDragging(false);
+    scrollContainerRef.current.style.cursor = "grab";
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.style.cursor = "grab";
+      }
     }
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5; // Scroll-speed multiplier
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
   return (
@@ -45,14 +74,18 @@ export default function CategorySlider({ title, items }: CategoryProps) {
           </button>
         </div> */}
       </div>
-      
-      <div 
+
+      <div
         ref={scrollContainerRef}
-        className="flex overflow-x-auto pb-4 gap-3 scrollbar-hide"
+        className="flex overflow-x-auto pb-4 gap-3 scrollbar-hide cursor-grab"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        onMouseMove={handleMouseMove}
       >
         {items.map((item, itemIndex) => (
-          <div 
+          <div
             key={itemIndex}
             className="flex-shrink-0 w-[140px] md:w-[160px] bg-gray-100 rounded-lg p-3 flex flex-col items-center cursor-pointer hover:shadow-md transition-shadow"
           >
@@ -68,7 +101,7 @@ export default function CategorySlider({ title, items }: CategoryProps) {
           </div>
         ))}
       </div>
-      
+
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;

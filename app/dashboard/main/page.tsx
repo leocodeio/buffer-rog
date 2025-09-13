@@ -128,7 +128,7 @@ export default function MainPage() {
                 {diwaliCategories.map((category) => (
                   <div
                     key={category.id}
-                    className="bg-gray-200 p-2 rounded-lg flex flex-col items-center w-20 shadow-sm flex-shrink-0"
+                    className="bg-gray-200 p-2 rounded-lg flex flex-col items-center w-24 h-24 shadow-sm flex-shrink-0"
                   >
                     <p className="text-xs font-medium text-center">
                       {category.title}
