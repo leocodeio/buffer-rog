@@ -12,7 +12,7 @@ export default function PrintStorePage() {
           Blinkit ensures secure prints at every stage
         </p>
 
-        <div className="bg-white p-4 rounded-md shadow-sm flex gap-4 items-center">
+        <div className="bg-white p-4 w-full rounded-md shadow-sm flex gap-4 items-center">
           <div>
             <h2 className="font-bold mb-3">Documents</h2>
             <ul className="space-y-1 text-gray-500 text-sm mb-4">

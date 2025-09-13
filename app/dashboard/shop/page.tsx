@@ -10,6 +10,7 @@ type BestsellerProduct = {
   price: number;
   image: string;
   quantity: string;
+  deliveryTime: number; // Delivery time in minutes
 };
 
 export default function CartPage() {
@@ -21,20 +22,23 @@ export default function CartPage() {
       price: 27,
       image: "/assets/dashboard/cart/bestsellers/bs_01.png",
       quantity: "500 ML",
+      deliveryTime: 10,
     },
     {
       id: 2,
-      name: "Potato",
+      name: "Potato (Aloo)",
       price: 37,
       image: "/assets/dashboard/cart/bestsellers/bs_02.png",
       quantity: "1 KG",
+      deliveryTime: 8,
     },
     {
       id: 3,
-      name: "Tomato",
+      name: "Hybrid Tomato",
       price: 37,
       image: "/assets/dashboard/cart/bestsellers/bs_03.png",
       quantity: "1 KG",
+      deliveryTime: 6,
     },
   ];
 
@@ -76,18 +80,25 @@ export default function CartPage() {
                     fill
                     style={{ objectFit: "cover" }}
                   />
-                  <div className="absolute bottom-0 right-0 bg-white text-xs p-1 rounded-tl-md">
-                    96 × 108
-                  </div>
+                  <button className="bg-white text-green-500 border border-green-500 text-xs px-2 py-1 rounded absolute bottom-[-10px] right-0">
+                    ADD
+                  </button>
                 </div>
                 <div className="p-2">
                   <p className="text-xs font-medium">{product.name}</p>
-                  <p className="text-xs text-gray-500">{product.quantity}</p>
+                  <div className="flex items-center gap-1 mt-1">
+                    <div className="relative w-4 h-4">
+                      <Image
+                        src="/assets/dashboard/cart/timer.png"
+                        alt="Timer"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
+                    <p className="text-xs text-gray-500">{product.deliveryTime} mins</p>
+                  </div>
                   <div className="flex items-center justify-between mt-1">
                     <p className="font-bold">₹ {product.price}</p>
-                    <button className="bg-green-500 text-white text-xs px-2 py-1 rounded">
-                      ADD
-                    </button>
                   </div>
                 </div>
               </div>
